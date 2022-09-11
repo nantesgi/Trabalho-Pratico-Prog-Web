@@ -1,19 +1,24 @@
 <template>
   <div id="header">
-    <header id="container">
+    <header id="nav-container-cima">
       <div id="logo">
-        <h1 id="loja">Lojinha</h1>
+        <h1 id="nome-loja">LOJINHA</h1>
       </div>
-      <input
-        placeholder="Busque aqui seu produto"
-        type="text"
-        name="barra de pesquisa"
-        id="barraPesquisa"
-      />
-      <button id="botao">+ Novo produto</button>
-      <img src="../assets/online-shopping-1.png" alt="Itens selecionados" />
+
+      <div class="barra-pesquisa">
+          <input placeholder="Busque aqui seu produto" class="barra-pesquisa-input"/>
+          <fa class="pe-3 botao-search" icon="search"/>
+      </div>
+      
+      <div class="novo-produto">
+        <button id="botao-novo-produto">+ Novo produto</button>
+      </div>
+      
+      <div class="sacola">
+        <img src="../assets/images/icons/basket3.svg" class="sacola-compras" alt="Sacola de compras" />
+      </div>
     </header>
-    <div id="container2">
+    <div id="nav-container-lista">
       <nav id="nav1">
         <ul id="lista">
           <li class="itens">Livros</li>
@@ -24,69 +29,99 @@
         </ul>
       </nav>
     </div>
-  
   </div>
-  <!-- <div> -->
-  <!-- <input type="text" v-model="name" placeholder="Coloque seu nome">
-      <p>{{this.name}}</p> -->
-  <!-- </div> -->
 </template>
-
-// <script>
-// export default {
-//   data() {
-//     return {
-//       name: "",
-//     }
-//   }
-// }
-//
-</script>
 
 <style scoped>
 * {
   margin: 0;
 }
 
-#container {
+#nav-container-cima {
   width: 100%;
   height: 120px;
   background-color: #8546f0;
-
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-}
-#loja {
-  font-weight: 700;
-  font-size: 40px;
-  color: white;
 }
 
 #logo {
+  margin-left: 60px;
+  width: 40%;
 }
-#barraPesquisa {
+
+#nome-loja {
+  font-weight: 700;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
+
+.barra-pesquisa {
+  width: 40%;
+}
+
+.barra-pesquisa-input {
   width: 460px;
   height: 42px;
   background-color: #f4f4f4;
   border-radius: 10px;
   border: none;
+  padding-left: 15px;
 }
 
-#botao {
+.barra-pesquisa-input:focus {
+  outline: none;
+}
+
+.botao-search {
+  color: #8546f0;
+  cursor: pointer;
+  margin-left: -30px;
+}
+
+.novo-produto {
+  width: 15%;
+  margin-left: 100px;
+}
+
+#botao-novo-produto {
   width: 160px;
   height: 42px;
   background-color: #f4f4f4;
   border-radius: 12px;
   border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color:#9F9E9E;
 }
 
-#container2 {
+#botao-novo-produto:hover {
+  color: #7227f5;
+  font-weight: 700;
+}
+
+.sacola {
+  width: 10%;
+  margin-right: 60px;
+}
+
+.sacola-compras {
+  width: 30px;
+  cursor: pointer;
+  float: right;
+}
+
+.sacola-compras:hover {
+  opacity: 80%;
+}
+
+#nav-container-lista {
   height: 40px;
   width: 100%;
   background-color: #8546f0;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,16 +130,18 @@
 #lista {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  gap: 85px;
-}
-
-.itens {
-  font-family: "Inter";
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
   font-style: normal;
   font-weight: 400;
-  font-size: 27px;
+  font-size: 18px;
   list-style: none;
   color: #ffffff;
+  cursor: pointer;
+}
+
+#lista li:hover {
+  opacity: 80%;
 }
 </style>
