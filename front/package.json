@@ -17,7 +17,9 @@
     "bootstrap-icons": "^1.9.1",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
+    "v-mask": "^2.3.0",
     "vue": "^3.2.13",
+    "vue-currency-input": "^3.0.0",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {

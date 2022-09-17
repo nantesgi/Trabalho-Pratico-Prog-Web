@@ -12,4 +12,8 @@
   padding: 0;
   font-family: 'Inter', sans-serif;
 }
+
+html body {
+  background-color: #F4F4F4;
+}
 </style>

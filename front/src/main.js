@@ -6,7 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import VMask from 'v-mask';
 
 library.add(fas);
 
-createApp(App).use(router).component('fa', FontAwesomeIcon).mount('#app')
+createApp(App).use(router, VMask).component('fa', FontAwesomeIcon).mount('#app')

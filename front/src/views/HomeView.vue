@@ -1,6 +1,5 @@
 <template>
     <HeaderComponent />
-    
 </template>
 
 <script>
