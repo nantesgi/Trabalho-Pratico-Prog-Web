@@ -39,7 +39,7 @@
 
 #nav-container-cima {
   width: 100%;
-  height: 120px;
+  height: 100px;
   background-color: #8546f0;
   display: flex;
   flex-direction: row;

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CreateProduct from '../views/CreateProduct.vue'
+import SearchResultsView from  '../views/SearchResultsView.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/cadastrar-produto',
     name: 'create',
     component: CreateProduct
+  },
+  {
+    path: '/buscar',
+    name: 'get',
+    component: SearchResultsView
   }
 ]
 
