@@ -12,4 +12,13 @@
   padding: 0;
   font-family: 'Inter', sans-serif;
 }
+
+html body {
+  background-color: #F4F4F4;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #D7B1D7;
+  background-color: #D7B1D7;
+}
 </style>
