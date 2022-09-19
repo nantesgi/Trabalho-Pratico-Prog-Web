@@ -1,17 +1,21 @@
 <template>
   <div id="header">
     <header id="nav-container-cima" class="d-flex flex-lg-row flex-column align-items-center">
-      <div id="logo" class="d-flex justify-content-center mt-3">
-        <h1 id="nome-loja" class="ms-lg-0 ms-xl-0 float-left">LOJINHA</h1>
+      <div id="logo" class="d-flex justify-content-center mt-2">
+        <router-link to="/"><button id="nome-loja" class="ms-lg-0 ms-xl-0 float-left">LOJINHA</button></router-link>
       </div>
 
-      <div class="barra-pesquisa mt-3">
+      <div class="barra-pesquisa d-flex flex-row align-items-center my-1">
+        <div class="w-100">
           <input placeholder="Busque aqui seu produto" class="barra-pesquisa-input"/>
-          <!-- <fa class="pe-3 botao-search" icon="search"/> -->
+        </div>
+        <div>
+          <router-link to="/buscar"><far class="ms-2 botao-search" style="color:white" icon="search"/></router-link>
+        </div>
       </div>
       
       <div class="novo-produto d-none d-lg-block d-xl-block">
-        <router-link to="/cadastrar-produto"><button id="botao-novo-produto">+ Novo produto</button></router-link> 
+        <router-link to="/cadastrar-produto"><button id="botao-novo-produto" class="">+ Novo produto</button></router-link> 
       </div>
       
       <div class="sacola d-none d-lg-block d-xl-block">
@@ -55,10 +59,12 @@
   font-size: 32px;
   color: white;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .barra-pesquisa {
-  width: 50%;
+  width: 60%;
 }
 
 .barra-pesquisa-input {
@@ -73,12 +79,6 @@
 .barra-pesquisa-input:focus {
   outline: none;
 }
-
-/* .botao-search {
-  color: #8546f0;
-  cursor: pointer;
-  margin-left: -30px;
-} */
 
 .novo-produto {
   width: 15%;

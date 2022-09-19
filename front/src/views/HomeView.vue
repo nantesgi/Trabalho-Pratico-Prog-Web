@@ -7,8 +7,8 @@
 
       <Carousel class="w-100 mt-2" :settings="settings" :breakpoints="breakpoints" :wrap-around="true">
         <Slide v-for="slide in 10" :key="slide">
-          <div class="product-item mx-1">
-            <div class="product-img">
+          <div class="product-item carousel__item mx-1">
+            <div class="product-img m-2">
               <img src="@/assets/images/products/product-1.jpg" alt="" class="img-fluid d-block mx-auto">
               <span class="heart-icon">
                 <far :icon="['far', 'heart']"/>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="product-info py-3 px-2 text-start ps-3">
-              <span class="product-type">Electronics & Accessories</span>
+              <span class="product-type">Eletrônicos</span>
               <a href="#" class="d-block text-dark text-decoration-none py-2 product-name">Apple - Apple Watch Series 3
                 White Sports Band</a>
               <span class="product-price fw-bold">R$ 100,50</span>
@@ -44,8 +44,8 @@
       <Carousel class="w-100 mt-2" :settings="settings" :breakpoints="breakpoints" :wrap-around="true">
         <Slide v-for="slide in 10" :key="slide">
           <div class="product-item mx-1">
-            <div class="product-img">
-              <img src="@/assets/images/products/product-1.jpg" alt="" class="img-fluid d-block mx-auto">
+            <div class="product-img m-2">
+              <img src="@/assets/images/products/product-11.png" alt="" class="img-fluid d-block mx-auto">
               <span class="heart-icon cursor-pointer">
                 <far :icon="['far', 'heart']"/>
               </span>
@@ -58,9 +58,8 @@
             </div>
 
             <div class="product-info py-3 px-2 text-start ps-3">
-              <span class="product-type">Electronics & Accessories</span>
-              <a href="#" class="d-block text-dark text-decoration-none py-2 product-name">Apple - Apple Watch Series 3
-                White Sports Band</a>
+              <span class="product-type">Livros</span>
+              <a href="#" class="d-block text-dark text-decoration-none py-2 product-name">O Colecionador</a>
               <span class="product-price fw-bold">R$ 100,50</span>
               <span class="d-block product-installments">2x de 29,95 sem juros</span>
             </div>
@@ -90,7 +89,7 @@ export default {
   data: () => ({
     // carousel settings
     settings: {
-      itemsToShow: 1,
+      itemsToShow: 2,
       snapAlign: 'center',
     },
     // breakpoints are mobile first
@@ -98,7 +97,7 @@ export default {
     breakpoints: {
       // 700px and up
       700: {
-        itemsToShow: 3.5,
+        itemsToShow: 3,
         snapAlign: 'center',
       },
       // 1024 and up
@@ -128,6 +127,10 @@ h2 {
   font-weight: bolder !important;
 }
 
+.container {
+  min-width: 90%;
+}
+
 .product-item {
   background-color: #FAFAFA;
   border-radius: 15px;
@@ -153,10 +156,6 @@ h2 {
   background-color: rgb(39, 39, 39);
   color: #fff;
   transition: all 0.3s ease-in-out;
-}
-
-.btns button:hover {
-  color: #8546F0;
 }
 
 .product-img:hover .btns {
@@ -196,6 +195,16 @@ h2 {
 
 .product-item {
   width: 220px;
+}
+
+.carousel__slide {
+	padding: 10px;
+}
+
+.carousel__prev,
+.carousel__next {
+	background-color: white!important;
+	box-sizing: content-box;
 }
 
 </style>

@@ -1,13 +1,16 @@
 <template>
   <div>
     <HeaderComponent />
-    <div class="container m-0 p-0 d-flex flex-row">
-      <div class="container-filtros p-4 ps-5">
+    <div class="container p-5 d-flex flex-column">
+
+      <!-- TO DO  Busca com filtragem avançada-->
+
+      <!-- <div class="container-filtros p-4 ps-5">
         <div class="container-filtros-categoria">
           <h2>Categoria</h2>
           <hr />
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="">
+            <input class="form-check-input" type="checkbox" value="" checked>
             <label class="form-check-label">
               Refrigeradores
             </label>
@@ -87,20 +90,30 @@
         <div class="container-filtros-preco mt-4">
           <h2>Preço</h2>
           <hr />
-          <div class="range-slider">
-            <input type="range" min="0" max="180" step="1" v-model="sliderMin">
-            <input type="number" min="0" max="180" step="1" v-model="sliderMin">
-            <input type="range" min="0" max="180" step="1" v-model="sliderMax">
-            <input type="number" min="0" max="180" step="1" v-model="sliderMax">
+          <div class="d-flex flex-row max-w-100">
+            <div class="w-50">
+              <label>
+                Preço mínimo:
+              </label>
+              <input type="number"/>
+            </div>
+
+            <div class="w-50">
+              <label>
+                Preço máximo:
+              </label>
+              <input type="number"/>
+            </div>
+
           </div>
         </div>
+      </div> -->
+      <h2 class="ms-5 ps-4">Exibindo resultados para "Geladeira"</h2>
 
-      </div>
-
-      <div class="container-listagem d-flex flex-row flex-wrap">
-        <div v-for="slide in 12" :key="slide" class="product-item mx-3 my-3">
-          <div class="product-img">
-            <img src="@/assets/images/products/product-1.jpg" alt="" class="img-fluid d-block mx-auto">
+      <div class="container-listagem justify-content-center d-flex flex-row flex-wrap">
+        <div v-for="slide in 15" :key="slide" class="product-item mx-3 my-3">
+          <div class="product-img m-2">
+            <img src="@/assets/images/products/product-10.png" alt="" class="img-fluid d-block mx-auto">
             <span class="heart-icon">
               <far :icon="['far', 'heart']" />
             </span>
@@ -113,9 +126,8 @@
           </div>
 
           <div class="product-info py-3 px-2 text-start ps-3">
-            <span class="product-type">Electronics & Accessories</span>
-            <a href="#" class="d-block text-dark text-decoration-none py-2 product-name">Apple - Apple Watch Series 3
-              White Sports Band</a>
+            <span class="product-type">Eletrodomésticos	</span>
+            <a href="#" class="d-block text-dark text-decoration-none py-2 product-name">Geladeira/Refrigerador Electrolux Frost Free - French Door</a>
             <span class="product-price fw-bold">R$ 100,50</span>
             <span class="d-block product-installments">2x de 29,95 sem juros</span>
           </div>
@@ -131,7 +143,7 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 export default {
   components: {
     HeaderComponent,
-  }, 
+  },
   data: () => ({
     minAngle: 10,
     maxAngle: 30
@@ -174,16 +186,17 @@ export default {
 }
 
 .container {
-  min-width: 100vw;
+  min-width: 100%;
+  justify-content: center;
 }
 
 .container-listagem {
-  width: 100%;
+  min-width: 100%;
   height: auto;
 }
 
 .container-filtros {
-  width: 30%;
+  width: 20%;
   height: auto;
 }
 
@@ -300,38 +313,5 @@ input[type=number] {
   font-size: 13px;
   border: none;
   background-color: transparent;
-}
-
-input[type=range] {
-  -webkit-appearance: none;
-  width: 100%;
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: #CCCCCC;
-  border-radius: 1px;
-  box-shadow: none;
-  border: 0;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  z-index: 2;
-  position: relative;
-  border: 1px solid #8546F0;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #fafcff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -7px;
 }
 </style>

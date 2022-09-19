@@ -6,7 +6,7 @@
                 <div class="image-preview p-3" id="imagePreview">
                     <img src="" alt="Image Preview" class="image-preview__image">
                     <div class="image-preview__default-text d-flex flex-column align-items-center">
-                        <fa class="pe-3 botao-search" style="width: 30px; height: 30px; opacity: 70%;" icon="image"/>
+                        <far class="pe-3" style="width: 30px; height: 30px; opacity: 70%;" icon="image"/>
                         Adicionar imagem
                     </div>
                 </div>
@@ -301,6 +301,7 @@ export default {
                 const reader = new FileReader();
 
                 previewDefaultText.style.display = 'none';
+                previewDefaultText.classList.remove('d-flex');
                 previewImage.style.display = 'block';
 
                 reader.addEventListener('load', function () {
