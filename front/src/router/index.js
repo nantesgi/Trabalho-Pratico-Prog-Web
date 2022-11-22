@@ -1,24 +1,38 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CreateProduct from '../views/CreateProduct.vue'
-import SearchResultsView from  '../views/SearchResultsView.vue'
+import Home from '../views/Home.vue'
+import ProductCreate from '../views/ProductCreate.vue'
+import ProductList from  '../views/ProductList.vue'
+import ProductDetails from  '../views/ProductDetails.vue'
+import ProductBag from  '../views/ProductBag.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
     path: '/cadastrar-produto',
     name: 'create',
-    component: CreateProduct
+    component: ProductCreate
   },
   {
-    path: '/buscar',
-    name: 'get',
-    component: SearchResultsView
-  }
+    path: '/buscar/:search?',
+    name: 'buscar',
+    component: ProductList,
+    props: true
+  },
+  {
+    path: '/visualizar-produto/:id',
+    name: 'ProductDetails',
+    component: ProductDetails,
+    props: true
+  },
+  {
+    path: '/sacola-de-compras',
+    name: 'sacola',
+    component: ProductBag
+  },
 ]
 
 const router = createRouter({
