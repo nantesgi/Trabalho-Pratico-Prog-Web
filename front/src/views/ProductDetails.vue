@@ -40,7 +40,6 @@
             <input
               type="text"
               name="qnt"
-              value="1"
               class="input-qnt fw-bolder"
               v-model="quantity"
             />

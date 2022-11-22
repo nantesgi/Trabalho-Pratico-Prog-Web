@@ -551,7 +551,9 @@ export default {
               },
               description: this.product.description,
               stock: this.product.stock,
-              unitPrice: this.product.unitPrice,
+              unitPrice: parseFloat(
+                this.priceBR.toString().replace(".", "").replace(",", ".")
+              ),
             },
             author: this.author,
             genre: this.genre,
@@ -575,7 +577,9 @@ export default {
               },
               description: this.product.description,
               stock: this.product.stock,
-              unitPrice: this.product.unitPrice,
+              unitPrice: parseFloat(
+                this.priceBR.toString().replace(".", "").replace(",", ".")
+              ),
             },
             brand: this.brand,
             format: this.format,
@@ -626,7 +630,9 @@ export default {
                 },
                 description: this.product.description,
                 stock: this.product.stock,
-                unitPrice: this.product.unitPrice,
+                unitPrice: parseFloat(
+                  this.priceBR.toString().replace(".", "").replace(",", ".")
+                ),
               },
               color: this.color,
               doorType: this.doorType,
@@ -656,7 +662,9 @@ export default {
                 },
                 description: this.product.description,
                 stock: this.product.stock,
-                unitPrice: this.product.unitPrice,
+                unitPrice: parseFloat(
+                  this.priceBR.toString().replace(".", "").replace(",", ".")
+                ),
               },
               color: this.color,
               brand: this.brand,
@@ -682,7 +690,9 @@ export default {
               },
               description: this.product.description,
               stock: this.product.stock,
-              unitPrice: this.product.unitPrice,
+              unitPrice: parseFloat(
+                this.priceBR.toString().replace(".", "").replace(",", ".")
+              ),
             },
             brand: this.brand,
             processor: this.processor,
