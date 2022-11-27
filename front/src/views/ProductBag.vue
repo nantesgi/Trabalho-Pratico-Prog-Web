@@ -161,14 +161,6 @@ export default {
     }
   },
   mounted() {
-    if (this.produtos.length != 0) {
-      console.log(this.produtos);
-      console.log("tem prodto na sacola");
-    }
-    if (this.produtos.length == 0) {
-      console.log(this.produtos);
-      console.log("não tem produtos na sacola");
-    }
     var buttonPlus = $(".qnt-btn-mais");
     var buttonMinus = $(".qnt-btn-menos");
 
