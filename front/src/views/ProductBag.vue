@@ -4,7 +4,7 @@
     <div class="pb-4">
       <h2 class="fw-bolder">Sacola de compras</h2>
     </div>
-    <div class="row">
+    <div v-if="this.produtos.length != 0" class="row">
       <div class="col-md-8 m-0 p-0 pb-3">
         <div class="row d-none d-md-flex">
           <div class="col-9">
@@ -112,6 +112,9 @@
         </div>
       </div>
     </div>
+    <div v-if="this.produtos.length == 0">
+      <p>Ainda não há produtos em sua sacola</p>
+    </div>
   </div>
 </template>
 
@@ -137,10 +140,6 @@ export default {
     };
   },
   created() {
-    // this.produtosHome = JSON.parse(localStorage.getItem("productsBagHome"));
-    // this.produtosDetails = JSON.parse(
-    //   localStorage.getItem("productsBagDetails")
-    // );
     if (localStorage.getItem("productsBagList")) {
       this.produtosList = JSON.parse(localStorage.getItem("productsBagList"));
       this.produtos = [...this.produtosList];
@@ -155,10 +154,6 @@ export default {
       );
       this.produtos = [...this.produtos, ...this.produtosDetails];
     }
-    // this.produtos = [
-    //   ...this.produtosHome,
-    //   ...this.produtosDetails,
-    // ];
 
     for (var i = 0; i < this.produtos.length; i++) {
       var valor = this.produtos[i]?.unitPrice * this.produtos[i]?.quantity;
@@ -191,7 +186,7 @@ export default {
         )
         .then((response) => {
           console.log(response);
-          console.log(this.produtos);
+          localStorage.clear();
         })
         .catch((error) => {
           console.log(error);
@@ -225,7 +220,6 @@ a:hover {
   background-color: #05d633;
 }
 
-/*--------------------------*/
 .qnt-container {
   display: flex;
   align-items: center;
