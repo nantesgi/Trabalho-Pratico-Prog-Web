@@ -16,23 +16,23 @@
         </div>
         <div
           v-for="produto in produtos"
-          :key="produto.id"
+          :key="produto?.id"
           class="container-branco p-3 mb-3"
         >
           <div class="row">
             <div class="col-2 p-0 mb-4 mb-lg-0">
               <img
-                :src="`https://ecommerce-progweb-server.herokuapp.com/images/${produto.photo}`"
+                :src="`https://ecommerce-progweb-server.herokuapp.com/images/${produto?.photo}`"
                 class="w-100 p-1"
               />
             </div>
             <div id="product-name" class="col-10 col-md-7">
-              <p class="fw-bolder">{{ produto.name }}</p>
+              <p class="fw-bolder">{{ produto?.name }}</p>
             </div>
             <div class="col-6 col-md-3 d-flexalign-items-center">
               <h3 class="text-center fw-bolder">
                 {{
-                  produto.unitPrice.toLocaleString("pt-BR", {
+                  produto?.unitPrice?.toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })
@@ -48,17 +48,17 @@
         </div>
 
         <div class="pt-4">
-          <div v-for="produto in produtos" :key="produto.id" class="row">
+          <div v-for="produto in produtos" :key="produto?.id" class="row">
             <div class="col-1">
-              <p class="fw-bold">{{ produto.quantity }}x</p>
+              <p class="fw-bold">{{ produto?.quantity }}x</p>
             </div>
             <div class="col-6">
-              <p class="ms-1">{{ produto.name }}</p>
+              <p class="ms-1">{{ produto?.name }}</p>
             </div>
             <div class="col-5">
               <p>
                 {{
-                  (produto.unitPrice * produto.quantity).toLocaleString(
+                  (produto?.unitPrice * produto?.quantity).toLocaleString(
                     "pt-BR",
                     {
                       style: "currency",
@@ -93,13 +93,15 @@
 
         <div class="pt-5 mt-3">
           <div class="d-flex justify-content-center">
-            <button
-              type="submit"
-              class="botao-comprar py-1 px-5 m-2"
-              @click="buy()"
-            >
-              Comprar
-            </button>
+            <router-link to="/">
+              <button
+                type="submit"
+                class="botao-comprar py-1 px-5 m-2"
+                @click="buy()"
+              >
+                Comprar
+              </button>
+            </router-link>
           </div>
 
           <div class="pt-1">
@@ -135,19 +137,31 @@ export default {
     };
   },
   created() {
-    this.produtosHome = JSON.parse(localStorage.getItem("productsBagHome"));
-    this.produtosDetails = JSON.parse(
-      localStorage.getItem("productsBagDetails")
-    );
-    this.produtosList = JSON.parse(localStorage.getItem("productsBagList"));
-    this.produtos = [
-      ...this.produtosHome,
-      ...this.produtosDetails,
-      ...this.produtosList,
-    ];
+    // this.produtosHome = JSON.parse(localStorage.getItem("productsBagHome"));
+    // this.produtosDetails = JSON.parse(
+    //   localStorage.getItem("productsBagDetails")
+    // );
+    if (localStorage.getItem("productsBagList")) {
+      this.produtosList = JSON.parse(localStorage.getItem("productsBagList"));
+      this.produtos = [...this.produtosList];
+    }
+    if (localStorage.getItem("productsBagHome")) {
+      this.produtosHome = JSON.parse(localStorage.getItem("productsBagHome"));
+      this.produtos = [...this.produtos, ...this.produtosHome];
+    }
+    if (localStorage.getItem("productsBagDetails")) {
+      this.produtosDetails = JSON.parse(
+        localStorage.getItem("productsBagDetails")
+      );
+      this.produtos = [...this.produtos, ...this.produtosDetails];
+    }
+    // this.produtos = [
+    //   ...this.produtosHome,
+    //   ...this.produtosDetails,
+    // ];
 
     for (var i = 0; i < this.produtos.length; i++) {
-      var valor = this.produtos[i].unitPrice * this.produtos[i].quantity;
+      var valor = this.produtos[i]?.unitPrice * this.produtos[i]?.quantity;
       this.valorTotal = this.valorTotal + valor;
     }
   },
@@ -176,11 +190,11 @@ export default {
           this.produtos
         )
         .then((response) => {
-          console.log("to no then");
           console.log(response);
+          console.log(this.produtos);
         })
         .catch((error) => {
-          console.log("caiu no catch");
+          console.log(error);
         });
     },
   },
