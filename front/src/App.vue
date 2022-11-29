@@ -59,8 +59,18 @@ p {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.container-autenticacao {
+  background-color: white;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 input[type="text"],
 input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="month"],
 select,
 textarea {
   background-color: #f4f4f4;
@@ -76,6 +86,9 @@ textarea {
 
 input[type="text"],
 input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="month"],
 textarea:focus {
   outline: none;
 }

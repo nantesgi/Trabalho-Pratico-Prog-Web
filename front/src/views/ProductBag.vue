@@ -92,14 +92,14 @@
         </div>
 
         <div class="pt-5 mt-3">
-          <div class="d-flex justify-content-center">
-            <router-link to="/">
+          <div class="d-flex justify-content-center w-100">
+            <router-link to="/login">
               <button
                 type="submit"
-                class="botao-comprar py-1 px-5 m-2"
-                @click="buy()"
+                class="botao-comprar py-1 px-5 m-2 w-100"
+                @click="advance()"
               >
-                Comprar
+                Continuar
               </button>
             </router-link>
           </div>
@@ -178,19 +178,8 @@ export default {
     });
   },
   methods: {
-    buy() {
-      axios
-        .post(
-          "https://ecommerce-progweb-server.herokuapp.com/products/checkout",
-          this.produtos
-        )
-        .then((response) => {
-          console.log(response);
-          localStorage.clear();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    advance() {
+      localStorage.setItem("allProductsBag", JSON.stringify(this.produtos));
     },
   },
 };

@@ -4,21 +4,23 @@ import ProductCreate from '../views/ProductCreate.vue'
 import ProductList from  '../views/ProductList.vue'
 import ProductDetails from  '../views/ProductDetails.vue'
 import ProductBag from  '../views/ProductBag.vue'
+import Registration from  '../views/Registration.vue'
+import Authentication from  '../views/Authentication.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home',
     component: Home
   },
   {
     path: '/cadastrar-produto',
-    name: 'create',
+    name: 'ProductCreate',
     component: ProductCreate
   },
   {
     path: '/buscar/:search?',
-    name: 'buscar',
+    name: 'ProductList',
     component: ProductList,
     props: true
   },
@@ -30,8 +32,18 @@ const routes = [
   },
   {
     path: '/sacola-de-compras',
-    name: 'sacola',
+    name: 'ProductBag',
     component: ProductBag
+  },
+  {
+    path: '/cadastrar-cliente',
+    name: 'Registration',
+    component: Registration
+  },
+  {
+    path: '/login',
+    name: 'Authentication',
+    component: Authentication
   },
 ]
 

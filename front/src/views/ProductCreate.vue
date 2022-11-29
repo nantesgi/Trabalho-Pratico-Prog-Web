@@ -412,7 +412,6 @@ export default {
   },
   directives: { money: VMoney },
   mounted() {
-    console.log(typeof this.priceBR);
     // INPUT'S CATEGORIES RENDERING
     let dropdownCategorias = document.querySelector("#select-categorias");
     let dropdownEletrodomesticos = document.querySelector(
