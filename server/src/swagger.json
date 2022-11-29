@@ -1,0 +1,420 @@
+{
+  "openapi": "3.0.*",
+  "info": {
+    "title": "Ecommerce Documentation",
+    "description": "This is an API Rest",
+    "version": "1.0.3",
+    "contact": {
+      "email": "victoramarques@icloud.com"
+    }
+  },
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "List all products",
+        "description": "List all products",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "searchField",
+            "type": "string",
+            "description": "Seach products by name or description",
+            "example": "A bela e a fera"
+          },
+          {
+            "in": "query",
+            "name": "unitPrice[gte]",
+            "type": "number",
+            "description": "Search for products by unit price greater than",
+            "example": "90"
+          },
+          {
+            "in": "query",
+            "name": "unitPrice[lte]",
+            "type": "number",
+            "description": "Search for products by unit price less than",
+            "example": "1250.70"
+          },
+          {
+            "in": "query",
+            "name": "Book[isNot]",
+            "description": "Search for only books",
+            "example": "null"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "department": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "stock": {
+                        "type": "integer"
+                      },
+                      "unitPrice": {
+                        "type": "number",
+                        "format": "float"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "Book": {
+                        "type": "object"
+                      },
+                      "Game": {
+                        "type": "object"
+                      },
+                      "Laptop": {
+                        "type": "object"
+                      },
+                      "Refrigerator": {
+                        "type": "object"
+                      },
+                      "WashingMachine": {
+                        "type": "object"
+                      },
+                      "MicroWave": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books": {
+      "post": {
+        "tags": ["Book"],
+        "summary": "Create a book",
+        "description": "Create a new book",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "genre": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "001.png",
+                    "name": "O duque e eu",
+                    "department": {
+                      "name": "Leitura"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  },
+                  "author": "Julia Quinn",
+                  "genre": "Romance de amor, Ficção histórica",
+                  "language": "Inglês"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/games": {
+      "post": {
+        "tags": ["Game"],
+        "summary": "Create a game",
+        "description": "Create a new game",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "002.png",
+                    "name": "GTA",
+                    "department": {
+                      "name": "Eletrônicos"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  },
+                  "brand": "Rockstar Games",
+                  "format": "Virtual"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/laptops": {
+      "post": {
+        "tags": ["Laptop"],
+        "summary": "Create a laptop",
+        "description": "Create a new laptop",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "003.png",
+                    "name": "Laptop",
+                    "department": {
+                      "name": "Eletrônicos"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/refrigerators": {
+      "post": {
+        "tags": ["Refrigerator"],
+        "summary": "Create a refrigerator",
+        "description": "Create a new refrigerator",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "doorType": {
+                    "type": "string"
+                  },
+                  "snowBreakType": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "voltage": {
+                    "type": "number"
+                  },
+                  "capacity": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "004.png",
+                    "name": "Geladeira Frost Free",
+                    "department": {
+                      "name": "Eletrodomésticos"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  },
+                  "color": "Gray",
+                  "doorType": "Duplex",
+                  "snowBreakType": "Frost Free",
+                  "brand": "Electrolux",
+                  "voltage": 220,
+                  "capacity": "100L"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/washing-machines": {
+      "post": {
+        "tags": ["Washing Machine"],
+        "summary": "Create a washing machine",
+        "description": "Create a new washing machine",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "voltage": {
+                    "type": "number"
+                  },
+                  "capacity": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "005.png",
+                    "name": "Máquina Lava e Seca",
+                    "department": {
+                      "name": "Eletrodomésticos"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  },
+                  "color": "White",
+                  "brand": "LG",
+                  "voltage": 220,
+                  "capacity": "200L"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/micro-waves": {
+      "post": {
+        "tags": ["Micro Wave"],
+        "summary": "Create a micro wave",
+        "description": "Create a new micro wave",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "object"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "voltage": {
+                    "type": "number"
+                  },
+                  "capacity": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product": {
+                    "photo": "006.png",
+                    "name": "Microondas Potente",
+                    "department": {
+                      "name": "Eletrodomésticos"
+                    },
+                    "description": "product description example",
+                    "stock": 100,
+                    "unitPrice": 1.99
+                  },
+                  "color": "Black",
+                  "brand": "Brastemp",
+                  "voltage": 127,
+                  "capacity": "50L"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  }
+}

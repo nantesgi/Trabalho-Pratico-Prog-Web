@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "debian-openssl-1.1.x"]
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Department {
+  id   String @id @default(uuid())
+  name String @unique
+
+  Product Product[]
+}
+
+model User {
+  id        String  @id @default(uuid())
+  name      String
+  cpf       String  @unique
+  email     String  @unique
+  password  String
+  payment   Payment @relation(fields: [paymentId], references: [id])
+  paymentId String
+
+  Checkout Checkout[]
+}
+
+model Payment {
+  id          String @id @default(uuid())
+  name        String
+  card_number String
+  cpf         String
+  expiresAt   String
+  cvv         Int
+
+  User     User[]
+  Checkout Checkout[]
+}
+
+model Checkout {
+  id        String  @id @default(uuid())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
+  payment   Payment @relation(fields: [paymentId], references: [id])
+  paymentId String
+
+  CheckoutProduct CheckoutProduct[]
+}
+
+model CheckoutProduct {
+  id         String   @id @default(uuid())
+  checkout   Checkout @relation(fields: [checkoutId], references: [id])
+  checkoutId String
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String
+  units      Int
+  unitPrice  Float
+}
+
+model Product {
+  id           String      @id @default(uuid())
+  photo        String?
+  name         String
+  department   Department? @relation(fields: [departmentId], references: [id])
+  departmentId String?
+  description  String
+  stock        Int
+  unitPrice    Float
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  Book            Book?
+  Game            Game?
+  Laptop          Laptop?
+  Refrigerator    Refrigerator?
+  WashingMachine  WashingMachine?
+  MicroWave       MicroWave?
+  CheckoutProduct CheckoutProduct[]
+}
+
+model Book {
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId String  @id @unique
+  author    String
+  genre     String
+  language  String
+}
+
+model Game {
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId String  @id @unique
+  brand     String
+  format    String
+}
+
+model Laptop {
+  product           Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId         String  @id @unique
+  brand             String
+  processor         String
+  operationalSystem String
+  storageSystem     String
+  storageCapacity   String
+}
+
+model Refrigerator {
+  product       Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId     String  @id @unique
+  color         String
+  doorType      String
+  snowBreakType String
+  brand         String
+  voltage       Int
+  capacity      String
+}
+
+model WashingMachine {
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId String  @id @unique
+  color     String
+  brand     String
+  voltage   Int
+  capacity  String
+}
+
+model MicroWave {
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productId String  @id @unique
+  color     String
+  brand     String
+  voltage   Int
+  capacity  String
+}
